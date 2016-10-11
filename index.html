@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-US">
+ <head>
+    <meta charset="UTF-8" />
+    <link rel="profile" href="http://gmpg.org/xfn/11" />
+    <link rel="pingback" href="http://bits.usc.edu/cs103/xmlrpc.php" />
+    <title>CS103 Fall 2015 &mdash; Compiler Info</title>
+
+        <link rel="alternate" type="application/rss+xml" title="CS103 Fall 2015 &raquo; Feed" href="http://bits.usc.edu/cs103/feed/" />
+<link rel="alternate" type="application/rss+xml" title="CS103 Fall 2015 &raquo; Comments Feed" href="http://bits.usc.edu/cs103/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/bits.usc.edu\/cs103\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.2.3"}};
+			!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='uscwebsheets-1-css'  href='http://bits.usc.edu/cs103/../websheets/CodeMirror/lib/codemirror.css?ver=4.2.3' type='text/css' media='all' />
+<link rel='stylesheet' id='uscwebsheets-3-css'  href='http://bits.usc.edu/cs103/../websheets/CodeMirror/theme/neat.css?ver=4.2.3' type='text/css' media='all' />
+<link rel='stylesheet' id='uscwebsheets-7-css'  href='http://fonts.googleapis.com/css?family=Source+Code+Pro%3A400%2C700&#038;ver=4.2.3' type='text/css' media='all' />
+<link rel='stylesheet' id='uscwebsheets-9-css'  href='http://bits.usc.edu/websheets/websheets.css?ver=4.2.3' type='text/css' media='all' />
+<script type='text/javascript' src='http://bits.usc.edu/cs103/../websheets/jquery.min.js?ver=4.2.3'></script>
+<script type='text/javascript' src='http://bits.usc.edu/cs103/../websheets/CodeMirror/lib/codemirror.js?ver=4.2.3'></script>
+<script type='text/javascript' src='http://bits.usc.edu/cs103/../websheets/CodeMirror/mode/clike/clike.js?ver=4.2.3'></script>
+<script type='text/javascript' src='http://bits.usc.edu/cs103/../websheets/CodeMirror/addon/selection/mark-selection.js?ver=4.2.3'></script>
+<script type='text/javascript' src='http://bits.usc.edu/cs103/../websheets/CodeMirror/addon/edit/matchbrackets.js?ver=4.2.3'></script>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#038;ver=4.2.3'></script>
+<script type='text/javascript' src='http://bits.usc.edu/websheets/websheets.js?ver=4.2.3'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://bits.usc.edu/cs103/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://bits.usc.edu/cs103/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.2.3" />
+<link rel='canonical' href='http://bits.usc.edu/cs103/compile/' />
+<link rel='shortlink' href='http://bits.usc.edu/cs103/?p=1565' />
+<script type='text/x-mathjax-config'> 
+MathJax.Hub.Config({tex2jax: {displayMath: [ ['$$','$$'] ], inlineMath: [['$','$'] ]} });
+</script>
+<script type='text/javascript'> 
+   websheets.authinfo = {"logged_in":false,"required_username_suffix":"@usc.edu","providers":["Google"],"username":"anonymous","domain":"n\/a","is_super":false,"error_span":"","info_span":"<span class='ws_info_span'>Not logged in. Log in with <a href='?auth=Google'>Google<\/a>.<\/span>"};
+   websheets.urlbase = 'http://bits.usc.edu/websheets/';
+   websheets.require_login = true;
+   websheets.header_toggling = true;
+</script>
+<script type='text/javascript'> submit_ajax_url = 'http://bits.usc.edu/codedrop/codedrop.php'; </script>
+<link rel='stylesheet' href='http://bits.usc.edu/codedrop/codedrop.css?ver=4.2.2' type='text/css' />
+<script type='text/javascript' src='http://bits.usc.edu/codedrop/codedrop.js?ver=4.2.2'></script>
+
+   <meta name="viewport" content="width=device-width, initial-scale=0.9, user-scalable=no" />
+
+
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+   <link rel="stylesheet" type="text/css" media="all" href="http://bits.usc.edu/cs103/wp-content/themes/usc-wp-theme-s15/style.css?7" />
+   <script src="http://bits.usc.edu/cs103/wp-content/themes/usc-wp-theme-s15/js/jquery-scrolltofixed-min.js"></script>
+   <script src="http://bits.usc.edu/cs103/wp-content/themes/usc-wp-theme-s15/js/expand.js"></script>
+   <script src="http://bits.usc.edu/cs103/wp-content/themes/usc-wp-theme-s15/js/highlight.js?1"></script>
+   <script src="http://bits.usc.edu/cs103/wp-content/themes/usc-wp-theme-s15/js/beginlec.js"></script>
+
+   <script type="text/javascript">
+     jQuery(document).ready(function() {
+         jQuery("#sidebar").scrollToFixed( { 
+            marginTop: 70,
+            fixed: function() { jQuery(this).css("box-sizing", "inherit"); },
+     unfixed: function() { jQuery(this).css("box-sizing", "border-box"); }
+         });
+     });
+     </script>
+   
+<style type="text/css">
+#logo_wrapper #logo {
+    background: #990000 url("http://bits.usc.edu/cs103/wp-content/themes/usc-wp-theme-s15/img/logo.gif") no-repeat;
+}
+header {
+    background: url("http://bits.usc.edu/cs103/wp-content/themes/usc-wp-theme-s15/img/bg.jpg");
+}
+</style>
+
+  </head>
+  <body class="page page-id-1565 page-template-default">
+    <div id="top_bar" class="noprint">
+      <div class="center">
+	<div id="logo_wrapper">
+	  <a href="http://usc.edu"><div id="logo"></div></a>
+	</div>
+      </div>
+    </div>
+    <header class="noprint">
+      <div class="center">
+<h1>
+        <a style="border: none; color: white;" href="http://bits.usc.edu/cs103/">
+	  <span>CS103 Fall 2015</span>
+	  Introduction to Programming</a>
+	</h1>
+      </div>
+    </header>
+    
+    <div id="content" class="center">
+      <div class="noscreen">
+        <h1>
+	  CS103 Fall 2015:
+	  Introduction to Programming	</h1>
+      </div>
+      <div id="main">
+   <div style="font-size:12px" class="noprint">
+	<span class="mobileonly-inline">
+	  <a href="#navigation" style="float:left">Navigation menu</a>
+	</span>
+            <span style="float:right"> <a class='usc-auth-status' href="javascript:websheets.auth_reload('Google')">Login to @usc account via Google</a> </span>
+</div><div style='clear:both' class="noprint"></div>
+                  <!--<div class="post-1565 page type-page status-publish hentry">-->
+            <!--<h2><a href="http://bits.usc.edu/cs103/compile/">Compiler Info</a></h2>-->
+	    <h2>Compiler Info</h2> 
+            <p>The <code>compile</code> command on the course VM is a novice-oriented compiler command.</p>
+<p>It can be used in three ways.</p>
+<ul>
+<li><code>compile progname</code>
+<ul>
+<li>compiles the C++ source <code>progname.cpp</code>, creating the executable  <code>progname</code></li>
+</ul>
+</li>
+<li><code>compile progname.cpp</code>
+<ul>
+<li>does exactly the same as the previous example</li>
+</ul>
+</li>
+<li><code>compile progname.cpp dependency.cpp -o progname</code>
+<ul>
+<li>compiles together several source files, creating the executable <code>progname</code></li>
+</ul>
+</li>
+</ul>
+<h3>What does <tt>compile</tt> do?</h3>
+<p>The <code>compile</code> command is a simple wrapper for <code>clang++</code>. Its main purpose in life is to add a long list of novice-friendly compiler flags. The flags turn certain warnings on or off and enable debugging.</p>
+<p>Specifically, the <code>compile</code> command adds these options:</p>
+<pre>-g -Wall -Wvla -Wshadow -Wunreachable-code -Wconversion
+-Wno-write-strings -Wno-sign-compare -Wno-sign-conversion
+-Wno-shorten-64-to-32</pre>
+<p>For example,</p>
+<pre>compile prog -o prog.cpp</pre>
+<p>is just a shorthand for</p>
+<pre>clang++ prog -o prog.cpp -g -Wall -Wvla ...</pre>
+<h3>Installation</h3>
+<p>If you're not using the course VM, then you can install the compile command as follows:</p>
+<pre>wget ftp://bits.usc.edu/cs103/compile
+sudo bash -c 'mv compile /bin/compile; chmod a+x /bin/compile'</pre>
+<p>You may also need to install <code>clang++</code>. On the version of Ubuntu we use, this is done via:</p>
+<pre>sudo apt-get install clang</pre>
+                                      <div class="pagination"></div>
+            <!--            <div class="clear"> </div> -->
+      <!--</div><!-- post_class() -->
+                      <div class="meta">
+<!--              <p>Posted by <a href="http://bits.usc.edu/cs103/blog/author/david-pritchard/" title="Posts by David Pritchard" rel="author">David Pritchard</a>              on <a href="http://bits.usc.edu/cs103/compile/">December 21, 2014</a>
+              in </p> -->
+            </div><!-- meta -->
+                                              <!--          <div class="left"><a href="http://bits.usc.edu/cs103">&laquo; Home page</a></div> -->
+              </div><!-- main -->
+
+    <div id="sidebar" style="z-index: 1000; box-sizing: border-box;" class="noprint">
+      <nav id="navigation">
+        <div class="menu-menu-1-container"><ul id="menu-menu-1" class="menu"><li id="menu-item-20" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20"><a href="http://bits.usc.edu/cs103/">Hello World!</a></li>
+<li id="menu-item-22" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22"><a href="http://bits.usc.edu/cs103/syllabus/">Syllabus</a></li>
+<li id="menu-item-1536" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1536"><a href="http://bits.usc.edu/cs103/install/">Install the Virtual Machine</a></li>
+<li id="menu-item-3233" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3233"><a href="https://piazza.com/class/icdnejixztzdb">Piazza Q&#038;A Site</a></li>
+<li id="menu-item-2776" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2776"><a href="http://bits.usc.edu/cs103/tools/">Tools</a></li>
+<li id="menu-item-21" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-21"><a href="http://bits.usc.edu/cs103/people/">People / Office Hours</a></li>
+<li id="menu-item-25" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25"><a href="http://bits.usc.edu/cs103/sections/">Sections</a></li>
+<li id="menu-item-139" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-139"><a href="http://bits.usc.edu/cs103/schedule/">Lecture Notes / Schedule</a></li>
+<li id="menu-item-162" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-162"><a href="http://bits.usc.edu/cs103/coursework/">Coursework</a></li>
+<li id="menu-item-23" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23"><a href="http://bits.usc.edu/cs103/wp-admin">Instructor Access</a></li>
+<li><a class='usc-auth-status' href="javascript:websheets.auth_reload('Google')">Login to @usc account via Google</a></li></ul></div>      </nav>
+    </div>
+
+       <div class="clear"> </div
+<footer>
+  <div class="left">&nbsp;</div>
+  <div class="right">&nbsp;</div>
+  <div class="clear"></div>
+  </footer>
+
+    </div><!-- content -->
+    <script type='text/javascript' src='http://bits.usc.edu/cs103/wp-includes/js/comment-reply.min.js?ver=4.2.3'></script>
+ 
+  </body>
+</html>
