@@ -1,12 +1,6 @@
 #include <iostream>
 #include <cmath>
 
-/* Author: Hector Amaya
- * Program: compute_sin
- * Description: Reads a number x from input, an angle in radians. 
- *    Computes an approximation to sin(x) using an 8th-order Taylor series.
- */
-
 using namespace std;
 
 int fact(int); // declares a function the skeleton defines for you.
